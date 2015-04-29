@@ -5,19 +5,15 @@
                 restrict: 'A',
                 scope: {
                     rating: '=',
-                    step: '='
+                    step: '=',
+                    max: '=?'
                 },
                 link: function(scope, element, attrs) {
-                    // var step = 0.1;
-                    // if (angular.isDefined(attrs.step)) {
-                    //     step = eval(attrs.step);
-                    // }
-                    // console.log('step = ' + step);
+                    scope.max = scope.max || 4;
 
-                    // var scope.max = 4;
-                    // if (angular.isDefined(attrs.scope.max)) {
-                    //     scope.max = parseInt(attrs.scope.max);
-                    // }
+                    if (!angular.isDefined(scope.max)) {
+                        scope.max = 4;
+                    }
 
                     var faIconName = 'star';
                     if (angular.isDefined(attrs.icon)) {
@@ -32,7 +28,7 @@
                         'position': 'relative'
                     });
                     // e.append(temp);
-                    var h = element[0].clientHeight;
+                    var h = 0;
 
                     var initialize = function() {
                         e.children().remove();
@@ -43,6 +39,7 @@
                         e.append(temp);
                         var div = angular.element('<div class="foreground"></div>');
                         div.append(temp);
+                        h = element[0].clientHeight;
                         div.css({
                             'position': 'absolute',
                             'width': 0 + 'px',
@@ -73,9 +70,9 @@
                     };
 
                     scope.$watch(function(scope) {
-
+                        return scope.max;
                     }, function() {
-
+                        initialize();
                         update();
                     });
                     scope.$watch(function(scope) {
