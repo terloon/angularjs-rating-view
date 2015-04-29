@@ -8,7 +8,6 @@
         font-size: 32px;
         color: white;
         text-shadow: -1px 0 #ccc, 0 1px #ccc, 1px 0 #ccc, 0 -1px #ccc;
-        /*letter-spacing: 4px;*/
     }
     .my-rating .foreground {
         color: #ff7f38;
@@ -32,10 +31,15 @@ step
 max
 <input ng-model="max" type="text">
 </div>
+<div style="width: 500px;">
+Can change the colors by inspecting and chaging the "color" style of the main
+div or the foreground class. Changing text spacing or width will not update the
+widget properly so that will not work.
+</div>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
-<script src="widget-rating.js"></script>
+<script src="../../js/rating-widget.js"></script>
 <script>
-var myApp = angular.module('myApp', ['tr-widget'])
+var myApp = angular.module('myApp', ['rating-widget'])
     .controller('MyCtrl', ['$scope', function($scope) {
         $scope.rating = 1;
         $scope.step = 0.1

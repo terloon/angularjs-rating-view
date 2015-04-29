@@ -1,33 +1,36 @@
 (function() {
-    angular.module('tr-widget', [])
+    angular.module('raing-widget', [])
         .directive('rating', function($window, $interval) {
             return {
                 restrict: 'A',
                 scope: {
                     rating: '=',
                     step: '=',
-                    max: '=?'
+                    max: '=?',
+                    icon: '=?'
                 },
                 link: function(scope, element, attrs) {
+
                     scope.max = scope.max || 4;
 
                     if (!angular.isDefined(scope.max)) {
                         scope.max = 4;
                     }
 
-                    var faIconName = 'star';
+                    scope.icon = scope.icon || 'star';
+                    var scope.icon = 'star';
                     if (angular.isDefined(attrs.icon)) {
-                        faIconName = attrs.icon;
+                        scope.icon = attrs.icon;
                     }
 
-                    var icon = '<i class="fa fa-' + faIconName + '"></i>';
+                    var icon = '<i class="fa fa-' + scope.icon + '"></i>';
+
                     var e = angular.element(element);
                     e.addClass('background');
                     e.css({
                         'display': 'inline-block',
                         'position': 'relative'
                     });
-                    // e.append(temp);
                     var h = 0;
 
                     var initialize = function() {
