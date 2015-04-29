@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>angularjs ratings</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <style>
+    .my-rating {
+        font-size: 32px;
+        color: white;
+        text-shadow: -1px 0 #ccc, 0 1px #ccc, 1px 0 #ccc, 0 -1px #ccc;
+        letter-spacing: 4px;
+    }
+    .my-rating .foreground {
+        color: #ff7f38;
+    }
+    </style>
+</head>
+<body ng-app="myApp" ng-controller="MyCtrl">
+<div rating="rating" class="my-rating" step="step"></div>
+<div>
+rating
+<input ng-model="rating" type="text">
+step
+<input ng-model="step" type="text">
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+<script src="widget-rating.js"></script>
+<script>
+var myApp = angular.module('myApp', ['tr-widget'])
+    .controller('MyCtrl', ['$scope', function($scope) {
+        $scope.rating = 1;
+        $scope.step = 0.1
+    }]);
+</script>
+</html>
+
