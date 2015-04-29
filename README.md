@@ -13,3 +13,6 @@ awesome icon. Ergo, font awesome is required for this to work.
 * **max** - The max rating possible.
 
 * **step** - The minimum step increment that will be represented. For example, if this is set to 0.25 and the rating value is 0.45, it will round to 0.5.
+
+An example can be seen at:
+http://gamecodemonkey.com/angular/rating-view/
